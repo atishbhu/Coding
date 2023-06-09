@@ -20,3 +20,5 @@ int main() {
 
 	return 0;
 }
+
+// TC = O(min(a,b))
