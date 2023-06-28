@@ -18,10 +18,7 @@ vector<vector<int>> rotate2DArrayUsingTranspose(vector<vector<int>> A) {
             swap(A[i][j],A[i][rows-j-1]);
         }
     }
-
     return A;
-
-    
 }
 
 void display (vector<vector<int>> ans) {
@@ -35,6 +32,23 @@ void display (vector<vector<int>> ans) {
     }
 }
 
+void rotate2DArrayUsingRotation(vector<vector<int>> a) {
+
+    int n = a.size();
+    for(int i=0;i<n/2;i++) {
+        for(int j=0;j<n-i-1;j++) {
+
+            int temp = a[i][j];
+            a[i][j] = a[n-1-j][i];
+            a[n-1-j][i] = a[n-1-i][n-1-j];
+            a[n-1-i][n-1-j] = a[j][n-1-i];
+            a[j][n-i-1] = temp;
+        }
+    }
+    display(a);
+}
+
+
 int main() {
     int n,m;
     cin>>n>>m;
@@ -47,8 +61,8 @@ int main() {
         }
     }
 
-    vector<vector<int>> ans = rotate2DArrayUsingTranspose(a);
-    display(ans);
+     rotate2DArrayUsingRotation(a);
+    // display(ans);
 
     return 0;
 }
