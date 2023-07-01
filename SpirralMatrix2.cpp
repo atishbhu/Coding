@@ -20,7 +20,7 @@ void generateSpiralPattern(int n) {
     int l = n-1;
     int value = 1;
     int x,y;
-    for(int i=0;i<n/2;i++) {
+    for(int i=0;i<=n/2;i++) {
         x=i,y=i;
         for(int j=0;j<l;j++) {
             a[x][y] = value;
