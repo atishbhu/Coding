@@ -67,3 +67,8 @@ int main() {
 
     return 0;
 }
+## Explanation
+- The solve function takes two matrices a and b as input and returns the matrix obtained by adding corresponding elements of a and b.
+- The nested loops in the solve function iterate through each element of a and b, calculate the sum, and store it in the ans matrix.
+- In the main function, the code takes input for the dimensions and elements of matrices a and b.
+- It then calls the solve function to obtain the result matrix and prints the result.
