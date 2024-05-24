@@ -25,6 +25,22 @@ TreeNode* takeInput() {
     }
     return root;
 }
+
+void printLevelWise(TreeNode* root) {
+    queue<TreeNode*> q;
+    q.push(root);
+    int count = 1;
+    while(!q.empty()) {
+        TreeNode* f = q.front();
+        q.pop();
+        cout<<f->data<<": ";
+        for(int i = 0; i < f->children.size(); i++) {
+            cout<<f->children[i] -> data<<", ";
+            q.push(f->children[i]);
+        }
+        cout<<endl;
+    }
+}
 TreeNode* takeInputLevelWise() {
     int rootData;
     cout<<"Enter root Data "<<endl;
@@ -50,6 +66,18 @@ TreeNode* takeInputLevelWise() {
     return root;
 }
 
+int height(TreeNode* root) {
+    if(root == nullptr) return 0;
+    int mx = 0;
+    for(int i = 0; i < root -> children.size(); i++) {
+        int childHeight = height(root->children[i]);
+        if(childHeight > mx) {
+            mx = childHeight;
+        }
+    }
+    return mx + 1;
+}
+
 void print(TreeNode* root) {
     if(root == nullptr) {
         return;
@@ -64,10 +92,21 @@ void print(TreeNode* root) {
     }
 }
 
+int countNodes(TreeNode* root) {
+    if(root == nullptr) return 0;
+
+    int ans = 1;
+    for(int i = 0; i < root -> children.size(); i++) {
+        ans += countNodes(root -> children[i]);
+    }
+    return ans;
+}
+
 int main() {
     TreeNode* root;
     root = takeInputLevelWise();
-    print(root);
+    cout<<height(root)<<endl;
+    // printLevelWise(root);
 
     return 0;
 }
