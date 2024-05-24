@@ -25,6 +25,30 @@ TreeNode* takeInput() {
     }
     return root;
 }
+TreeNode* takeInputLevelWise() {
+    int rootData;
+    cout<<"Enter root Data "<<endl;
+    cin>>rootData;
+    TreeNode* root = new TreeNode(rootData);
+    queue<TreeNode*> q;
+    q.push(root);
+    while(!q.empty()) {
+        TreeNode* f = q.front();
+        q.pop();
+        cout<<"Enter the number of child of "<<f->data<<endl;
+        int n;
+        cin>>n;
+        for(int i = 1; i <= n; i++) {
+            cout<<"Enter "<<i<<" th child of "<<f->data<<endl;
+            int childData;
+            cin>>childData;
+            TreeNode* child = new TreeNode(childData);
+            q.push(child);
+            f->children.push_back(child);
+        }
+    }
+    return root;
+}
 
 void print(TreeNode* root) {
     if(root == nullptr) {
@@ -42,7 +66,7 @@ void print(TreeNode* root) {
 
 int main() {
     TreeNode* root;
-    root = takeInput();
+    root = takeInputLevelWise();
     print(root);
 
     return 0;
