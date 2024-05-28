@@ -131,11 +131,27 @@ TreeNode* takeInputRecursive() {
     return root;
 
 }
+
+void preOrderIterative(TreeNode* root) {
+    stack<TreeNode*> st;
+    TreeNode* curr = root;
+    while(!st.empty() || curr != nullptr) {
+        while(curr != nullptr){
+            st.push(curr);
+            curr = curr -> left;
+        }
+        curr = st.top();
+        st.pop();
+        cout<<curr -> data<<" ";
+        curr = curr -> right;
+    }
+}
 int main() {
     TreeNode* root;
     root = takeInputLevelWise();
     // pintTreeLevelWise(root);
-    cout<<countNodes(root);
+    // cout<<countNodes(root);
+    preOrderIterative(root);
 
     return 0;
 }
